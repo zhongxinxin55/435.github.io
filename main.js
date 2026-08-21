@@ -16,9 +16,9 @@ window.addEventListener("load", () => {
 cards.forEach((card) => {
   card.addEventListener("click", () => {
     modalImage.src = card.dataset.image;
-    modalImage.alt = card.dataset.title;
-    modalTitle.textContent = card.dataset.title;
-    modalDesc.textContent = card.dataset.desc;
+    modalImage.alt = card.getAttribute("aria-label") || "作品预览";
+    if (modalTitle) modalTitle.textContent = card.dataset.title || "";
+    if (modalDesc) modalDesc.textContent = card.dataset.desc || "";
     modal.showModal();
   });
 });
